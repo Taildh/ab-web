@@ -1,0 +1,32 @@
+.introduction-wrapper .line {
+  position: relative;
+  height: 70px;
+}
+.introduction-wrapper .line::after {
+  position: absolute;
+  width: 0.5px;
+  height: 100%;
+  content: "";
+  background-color: #605E5E;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.introduction-wrapper .heading {
+  margin-top: 50px;
+  text-align: center;
+  font-size: 18px;
+  color: #605E5E;
+  font-family: "Times New Roman", Times, serif;
+  font-style: italic;
+  letter-spacing: 0.08em;
+}
+.introduction-wrapper .intro-text {
+  font-size: 20px;
+  color: #363636;
+  text-align: center;
+  width: 30%;
+  margin: 50px auto 0;
+  letter-spacing: normal;
+  line-height: 1.6em;
+  font-family: Arial, Helvetica, sans-serif;
+}/*# sourceMappingURL=introduction.css.map */
