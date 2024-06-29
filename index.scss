@@ -4,14 +4,34 @@
 
 @font-face {
     font-family: RaleWay;
-    src: url("/fonts/static/Raleway-Regular.ttf");
+    src: url("/fonts/RalewayRegular.ttf");
 }
+
 
 @font-face {
     font-family: AvenirLight;
-    src: url("/fonts/Avenir_Next_Pro_Full/AvenirNextLTPro-Medium.otf");
+    src: url("/fonts/AvenirNext_UltraLight.otf");
 }
 
+@font-face {
+    font-family: MontserratBlack;
+    src: url("/fonts/Montserrat_Black.ttf");
+}
+
+@font-face {
+    font-family: AvenirNextRegular;
+    src: url("/fonts/AvenirNextRegular.otf");
+}
+
+@font-face {
+    font-family: AvenirNextDemiBoldItalic;
+    src: url("/fonts/AvenirNextBoldItalic.otf");
+}
+
+@font-face {
+    font-family: AvenirNextUltraLightItalic;
+    src: url("/fonts/AvenirNextUltraLightItalic.otf");
+}
 
 main {
     padding: 0 80px 100px;
@@ -22,6 +42,7 @@ main {
     position: fixed;
     z-index: 10;
     top: 0;
+    height: 80px;
     background-color: #FFFFFF;
 }
 
@@ -51,7 +72,7 @@ main {
                 font-size: 14px;
                 line-height: 50px;
                 padding: 0 5px;
-                font-family: 'RaleWay';
+                font-family: AvenirLight, sans-serif;
             }
         }
     }
@@ -103,8 +124,7 @@ main {
         .heading {
             color: #FFFFFF;
             font-size: 50px;
-            font-weight: 400;
-            font-family: Arial, Helvetica, sans-serif;
+            font-family: MontserratBlack, sans-serif;;
             letter-spacing: 0.5em;
         }
 
@@ -112,12 +132,56 @@ main {
             color: #FFFFFF;
             font-size: 20px;
             letter-spacing: 0.8em;
-            font-family: Arial, Helvetica, sans-serif;
+            font-family: AvenirNextRegular, sans-serif;
         }
+    }
+
+    .banner-mobile {
+        display: none;
     }
 }
 
 /* END BANNER */
+.introduction-wrapper {
+    .line {
+        position: relative;
+        height: 70px;
+        
+        &::after {
+            position: absolute;
+            width: 0.5px;
+            height: 100%;
+            content: "";
+            background-color: #605E5E;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+    }
+
+    .heading {
+        margin-top: 50px;
+        text-align: center;
+        font-size: 18px;
+        color: #605E5E;
+        font-family: AvenirNextDemiBoldItalic, sans-serif;
+        font-style: italic;
+        letter-spacing: 0.08em;
+    }
+
+    .intro-text {
+        font-size: 20px;
+        color: #363636;
+        text-align: center;
+        width: 30%;
+        margin: 50px auto 0;
+        letter-spacing: normal;
+        line-height: 1.6em;
+        font-family: RaleWay, sans-serif;
+    }
+}
+/* INTRODUCTION */
+
+/* END INTRODUCTION */
 
 /* PROJECT CATEGORY */
 
@@ -129,7 +193,7 @@ main {
         text-align: center;
         font-size: 18px;
         color: #605E5E;
-        font-family: 'Times New Roman', Times, serif;
+        font-family: AvenirNextDemiBoldItalic, sans-serif;
         font-style: italic;
         letter-spacing: 0.08em;
     }
@@ -180,16 +244,32 @@ main {
                 top: 50%;
                 left: 50%;
                 display: flex;
+                flex-direction: column;
                 justify-content: center;
                 align-items: center;
                 transform: translate(-50%, -50%);
-                color: rgb(250, 250, 250);
-                font-size: 17px;
+                background: rgba(0.3, 0.3, 0.3, 0.8);
                 opacity: 0;
                 transition: opacity 0.3s ease;
-                background: rgba(0.3, 0.3, 0.3, 0.8);
-                font-style: italic;
-                letter-spacing: 0.08em;
+
+                .name {
+                    display: block;
+                    color: #FFFFFF;
+                    font-size: 17px;
+                    font-style: italic;
+                    letter-spacing: 0.08em;
+                    font-family: RaleWay, sans-serif;
+                }
+
+                .area {
+                    margin-top: 15px;
+                    display: block;
+                    color: #FFFFFF;
+                    font-size: 15px;
+                    font-style: italic;
+                    letter-spacing: 0.08em;
+                    font-family: AvenirLight, sans-serif;
+                }
             }
 
             &:hover .content {
@@ -227,7 +307,7 @@ main {
         text-align: center;
         font-size: 18px;
         color: #605E5E;
-        font-family: 'Times New Roman', Times, serif;
+        font-family: AvenirNextDemiBoldItalic, sans-serif;
         font-style: italic;
         letter-spacing: 0.08em;
     }
@@ -245,7 +325,7 @@ main {
             text-decoration: none;
             margin: 15px 0;
             color: #363636;
-            font-family: Arial, Helvetica, sans-serif;
+            font-family: RaleWay, sans-serif;
         }
 
         .hotline,
@@ -253,7 +333,7 @@ main {
             font-size: 20px;
             margin: 15px 0;
             color: #363636;
-            font-family: Arial, Helvetica, sans-serif;
+            font-family: RaleWay, sans-serif;
             line-height: 20px;
         }
     }
@@ -274,16 +354,6 @@ main {
         margin: 0 auto;
         text-align: center;
 
-        .policy-title {
-            font-size: 14px;
-            font-family: 'Times New Roman', Times, serif;
-            font-style: italic;
-            display: block;
-            margin: 10px 0 5px;
-            letter-spacing: 0.08em;
-            color: #605E5E;
-        }
-
         .social-link {
             display: flex;
             gap: 5px;
@@ -296,7 +366,7 @@ main {
 
         .copyright {
             font-size: 14px;
-            font-family: 'Times New Roman', Times, serif;
+            font-family: AvenirNextUltraLightItalic, sans-serif;
             font-style: italic;
             display: block;
             margin: 5px 0 15px;
@@ -316,6 +386,11 @@ main {
         display: flex;
         justify-content: space-between;
 
+        button {
+            background: none;
+            border: none;
+        }
+
         .button-back-modal {
             display: none;
         }
@@ -328,13 +403,13 @@ main {
             font-size: 18px;
             color: #363636;
             font-style: italic;
-            font-family: 'Times New Roman', Times, serif;
+            font-family: AvenirNextRegular, sans-serif;
         }
 
         .description {
             margin-top: 18px;
             font-size: 20px;
-            font-family: Arial, Helvetica, sans-serif;
+            font-family: RaleWay, sans-serif;
             line-height: 25px;
         }
     }
@@ -348,6 +423,7 @@ main {
             justify-content: center;
 
             .project-detail-image {
+                cursor: pointer;
                 height: calc(100vh - 200px);
                 width: auto;
             }
@@ -413,6 +489,7 @@ main {
                 height: 100vh;
                 max-width: 80vw;
                 width: auto;
+                box-shadow: 0 59px 38px rgba(22, 21, 21, 0.3), 0 15px 12px rgba(0,0,0,0.22);
             }
 
             .image-full-width {
@@ -445,6 +522,15 @@ main {
 
     main {
         padding: 0;
+    }
+
+    .section-fade-in {
+        opacity: 0;
+        transition: opacity 0.5s ease;
+    }
+
+    .section-fade-in.visible {
+        opacity: 1;
     }
 
     .scroll-top-mobile {
@@ -566,17 +652,21 @@ main {
 
     /* BANNER RES*/
     .banner-wrapper {
-        height: 80vh;
+        height: 100vh;
         margin-top: 0;
 
         .banner-content {
             gap: 10px;
+            perspective: 1000px;
+
 
             .heading {
                 text-align: center;
                 font-size: 30px;
                 line-height: 40px;
                 width: 60%;
+                opacity: 0;
+                
             }
 
             .desc {
@@ -584,7 +674,23 @@ main {
                 font-size: 16px;
                 width: 60%;
                 line-height: 20px;
+                opacity: 0;
             }
+
+            .text-animated {
+                transform-origin: top center;
+                animation: swingIn 1.5s ease forwards;
+            }
+        }
+
+        .banner-image {
+            display: none;
+        }
+
+        .banner-mobile {
+            display: block;
+            width: 100%;
+            height: 100%;
         }
     }
 
@@ -640,12 +746,17 @@ main {
         .heading-modal {
             display: flex;
             justify-content: space-between;
+            padding: 20px 20px 0 ;
 
             .button-back-modal {
                 display: block;
+                border: none;
+                background-color: transparent;
+                font-size: 20px;
             }
-            
-            .button-expand-modal, .button-close-modal {
+
+            .button-expand-modal,
+            .button-close-modal {
                 display: none;
             }
         }
@@ -654,10 +765,12 @@ main {
             margin: 20px 0;
 
             .carousel-item {
+                
                 .project-detail-image {
-                    height: 213px;
                     width: 100%;
-                    object-fit: cover;
+                    height: 213px;
+                    object-fit: contain;
+                    box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
                 }
             }
 
@@ -666,13 +779,13 @@ main {
                 width: 20px;
                 height: 20px;
                 top: 50%;
-        
+
                 // bottom: 0;
                 transform: none;
                 color: #363636;
                 font-size: 20px;
             }
-    
+
 
             .carousel-control-prev {
                 left: 0px;
@@ -689,4 +802,18 @@ main {
     }
 
     /* END MODAL RES*/
+}
+
+@keyframes swingIn {
+    0% {
+        transform: rotateX(-90deg);
+        /* Bắt đầu từ góc 90 độ và quay */
+        opacity: 0.5;
+    }
+
+    100% {
+        transform: rotateX(0deg);
+        /* Trở lại vị trí bình thường */
+        opacity: 1;
+    }
 }

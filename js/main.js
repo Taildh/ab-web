@@ -10,8 +10,7 @@ $(document).ready(function () {
 
 function scrollToTop() {
   window.scrollTo(0, 0);
-  hideNavSlide()
-
+  hideNavSlide();
 }
 
 function scrollToCenter(id) {
@@ -26,8 +25,7 @@ function scrollToCenter(id) {
     behavior: "smooth",
   });
 
-  hideNavSlide()
-
+  hideNavSlide();
 }
 
 // function toggleMenu () {
@@ -35,6 +33,11 @@ function scrollToCenter(id) {
 // }
 
 function expandSlide() {
+  const screenWidth = screen.width;
+
+  if (screenWidth <= 576) {
+    return;
+  }
 
   let slider = document.getElementById("projectSlider");
 
@@ -51,8 +54,6 @@ function expandSlide() {
       // IE/Edge
       slider.msRequestFullscreen();
     }
-  } else {
-    exitFullScreen();
   }
 }
 
@@ -81,34 +82,33 @@ document.addEventListener("fullscreenchange", function () {
   }
 });
 
-
 const buttonScrollToTopMobile = () => {
   let scrollTimeOut;
 
   function showScrollButton() {
-    const scrollButton = document.getElementById('scrollToTopBtn');;
-    scrollButton.classList.add('show-button');
-    scrollButton.classList.remove('hide-button');
+    const scrollButton = document.getElementById("scrollToTopBtn");
+    scrollButton.classList.add("show-button");
+    scrollButton.classList.remove("hide-button");
   }
-  
+
   function hideScrollButton() {
-    const scrollButton = document.getElementById('scrollToTopBtn');;
-    scrollButton.classList.remove('show-button');
-    scrollButton.classList.add('hide-button');
+    const scrollButton = document.getElementById("scrollToTopBtn");
+    scrollButton.classList.remove("show-button");
+    scrollButton.classList.add("hide-button");
 
     setTimeout(() => {
-      scrollButton.classList.remove('hide-button');
-      scrollButton.style.display = 'none';
-  }, 500); // Match the duration of the CSS transition
+      scrollButton.classList.remove("hide-button");
+      scrollButton.style.display = "none";
+    }, 500); // Match the duration of the CSS transition
   }
-  
+
   window.addEventListener("scroll", function () {
     this.clearTimeout(scrollTimeOut);
     showScrollButton();
-  
+
     scrollTimeOut = this.setTimeout(hideScrollButton, 2000);
-  })
-}
+  });
+};
 
 function hideNavSlide() {
   const nav = document.querySelector(".nav");
@@ -116,9 +116,8 @@ function hideNavSlide() {
   const toggleMenu = document.querySelector(".toggle-menu");
 
   toggleMenu.classList.remove("close-toggle-menu");
-  nav.classList.remove("nav-active"); 
+  nav.classList.remove("nav-active");
   logo.classList.remove("image-logo-hidden");
-
 }
 
 const navSlide = () => {
@@ -134,6 +133,91 @@ const navSlide = () => {
   });
 };
 
+const animatedText = () => {
+  const screenWidth = screen.width;
+
+  if (screenWidth <= 576) {
+    setTimeout(function () {
+      document
+        .querySelector(".banner-content .heading")
+        .classList.add("text-animated");
+      document
+        .querySelector(".banner-content .desc")
+        .classList.add("text-animated");
+    }, 2000);
+  }
+};
+
+document.addEventListener("DOMContentLoaded", function () {
+  const screenWidth = screen.width;
+
+  if (screenWidth > 576) return;
+
+  const fadeElements = document.querySelectorAll(".fade-in");
+
+  function checkViewport() {
+    fadeElements.forEach((element) => {
+      if (isElementInViewport(element)) {
+        element.classList.add("visible");
+      }
+    });
+  }
+
+  function isElementInViewport(el) {
+    const rect = el.getBoundingClientRect();
+    const viewportHeight =
+      window.innerHeight || document.documentElement.clientHeight;
+
+    // Calculate the bottom 1/3 of the viewport
+    const viewportThreshold = viewportHeight - viewportHeight / 3;
+
+    return rect.top <= viewportThreshold;
+  }
+
+  // Initial check when page loads
+  checkViewport();
+
+  // Check when scrolling
+  document.addEventListener("scroll", checkViewport);
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+  const screenWidth = screen.width;
+
+  if (screenWidth > 576) {
+    return;
+  }
+
+  const fadeElements = document.querySelectorAll(".section-fade-in");
+
+  function checkViewport() {
+    fadeElements.forEach((element) => {
+      if (isElementInViewport(element)) {
+        element.classList.add("visible");
+      } else {
+        element.classList.remove("visible");
+      }
+    });
+  }
+
+  function isElementInViewport(el) {
+    const rect = el.getBoundingClientRect();
+    const viewportHeight =
+      window.innerHeight || document.documentElement.clientHeight;
+
+    // Calculate the bottom 1/3 of the viewport
+    const viewportThreshold = viewportHeight - viewportHeight / 3;
+
+    return rect.top <= viewportThreshold;
+  }
+
+  // Initial check when page loads
+  checkViewport();
+
+  // Check when scrolling
+  document.addEventListener("scroll", checkViewport);
+});
 
 navSlide();
 buttonScrollToTopMobile();
+animatedText();
