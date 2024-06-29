@@ -34,7 +34,7 @@
 
 @font-face {
   font-family: RaleWay;
-  src: url("/fonts/Raleway-Italic-VariableFont_wght.ttf");
+  src: url("/fonts/static/Raleway-Regular.ttf");
 }
 @font-face {
   font-family: AvenirLight;
@@ -77,6 +77,7 @@ main {
   font-size: 14px;
   line-height: 50px;
   padding: 0 5px;
+  font-family: "RaleWay";
 }
 .header-wrapper .toggle-menu {
   display: none;
@@ -85,7 +86,7 @@ main {
 /* BANNER */
 .banner-wrapper {
   width: 100%;
-  height: 100vh;
+  height: 120vh;
   margin-top: -80px;
   position: relative;
   z-index: 1;
@@ -97,7 +98,7 @@ main {
   top: 0;
   left: 0;
   width: 100%;
-  height: 100vh;
+  height: 100%;
   z-index: -1;
   background-size: cover;
   background-repeat: no-repeat;
@@ -161,12 +162,13 @@ main {
 .project-category-wrapper .project-list {
   margin-top: 100px;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
   gap: 80px;
 }
 .project-category-wrapper .project-list .project-item {
   position: relative;
   height: 527px;
+  cursor: pointer;
 }
 .project-category-wrapper .project-list .project-item .thumb {
   width: 100%;
@@ -196,7 +198,7 @@ main {
   font-style: italic;
   letter-spacing: 0.08em;
 }
-.project-category-wrapper .project-list:hover .content {
+.project-category-wrapper .project-list .project-item:hover .content {
   opacity: 1;
   /* Show text on hover */
 }
@@ -293,6 +295,109 @@ main {
 }
 
 /* END FOOTER */
+/* MODAL */
+.modal-body {
+  padding: 50px;
+}
+.modal-body .heading-modal {
+  display: flex;
+  justify-content: space-between;
+}
+.modal-body .heading-modal .button-back-modal {
+  display: none;
+}
+.modal-body .project-detail {
+  padding: 100px 50px 0;
+}
+.modal-body .project-detail .title {
+  font-size: 18px;
+  color: #363636;
+  font-style: italic;
+  font-family: "Times New Roman", Times, serif;
+}
+.modal-body .project-detail .description {
+  margin-top: 18px;
+  font-size: 20px;
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 25px;
+}
+.modal-body .slider-image {
+  margin: 50px 100px;
+  background-color: #FFFFFF;
+}
+.modal-body .slider-image .carousel-item {
+  display: flex;
+  justify-content: center;
+}
+.modal-body .slider-image .carousel-item .project-detail-image {
+  height: calc(100vh - 200px);
+  width: auto;
+}
+.modal-body .slider-image .carousel-item .image-full-width {
+  width: 80vw;
+  height: 100vh;
+}
+.modal-body .slider-image .slider-header {
+  display: none;
+}
+.modal-body .slider-image .carousel-control-prev,
+.modal-body .slider-image .carousel-control-next {
+  width: 50px;
+  height: 50px;
+  top: 50%;
+  transform: translateY(-50%);
+  transform: none;
+  color: #363636;
+  font-size: 30px;
+}
+.modal-body .slider-image .carousel-control-prev:hover,
+.modal-body .slider-image .carousel-control-next:hover,
+.modal-body .slider-image .carousel-control-prev:focus,
+.modal-body .slider-image .carousel-control-next:focus {
+  background-color: transparent;
+  outline: none;
+}
+.modal-body .slider-image .carousel-control-prev {
+  left: -90px;
+}
+.modal-body .slider-image .carousel-control-next {
+  right: -90px;
+}
+.modal-body .slider-image-fullscreen {
+  position: relative;
+}
+.modal-body .slider-image-fullscreen .slider-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 20px;
+  display: flex;
+  z-index: 100000;
+  justify-content: space-between;
+  padding: 35px;
+}
+.modal-body .slider-image-fullscreen .carousel-item .project-detail-image {
+  height: 100vh;
+  max-width: 80vw;
+  width: auto;
+}
+.modal-body .slider-image-fullscreen .carousel-item .image-full-width {
+  width: 100%;
+  height: 100vh;
+}
+.modal-body .slider-image-fullscreen .carousel-control-prev {
+  left: 30px;
+}
+.modal-body .slider-image-fullscreen .carousel-control-next {
+  right: 30px;
+}
+
+/* END MODAL*/
+.scroll-top-mobile {
+  display: none;
+}
+
 @media screen and (max-width: 576px) {
   body {
     overflow-x: hidden;
@@ -300,21 +405,43 @@ main {
   main {
     padding: 0;
   }
-  /*HEADER RES*/
-  .header {
-    position: relative;
+  .scroll-top-mobile {
+    position: fixed;
+    z-index: 2;
+    display: none;
+    right: 30px;
+    bottom: 30vh;
+    width: 50px;
+    height: 50px;
+    background: rgba(255, 255, 255, 0.5);
+    border: none;
+    border-radius: 5px;
+    font-size: 30px;
+    color: #000000;
+    transition: opacity 0.5s ease-in-out;
   }
+  .show-button {
+    opacity: 1;
+    display: block;
+  }
+  .hide-button {
+    opacity: 0;
+  }
+  /*HEADER RES*/
   .header .header-wrapper {
-    width: 100%;
+    width: 100vw;
+  }
+  .header .header-wrapper .image-logo-hidden {
+    opacity: 0;
   }
   .header .header-wrapper .nav {
+    position: absolute;
     width: 100%;
     height: 100vh;
     flex-direction: column;
-    position: absolute;
     top: 80px;
     padding-top: 20px;
-    right: 0;
+    right: 0%;
     transform: translateX(100%);
     text-align: center;
     gap: 5px;
@@ -373,13 +500,20 @@ main {
     height: 80vh;
     margin-top: 0;
   }
+  .banner-wrapper .banner-content {
+    gap: 10px;
+  }
   .banner-wrapper .banner-content .heading {
     text-align: center;
     font-size: 30px;
+    line-height: 40px;
+    width: 60%;
   }
   .banner-wrapper .banner-content .desc {
     text-align: center;
     font-size: 16px;
+    width: 60%;
+    line-height: 20px;
   }
   /* END BANNER RES*/
   .introduction-wrapper .intro-text {
@@ -410,4 +544,45 @@ main {
     position: relative;
     display: block;
   }
+  /* MODAL RES*/
+  .modal-body {
+    padding: 0;
+  }
+  .modal-body .heading-modal {
+    display: flex;
+    justify-content: space-between;
+  }
+  .modal-body .heading-modal .button-back-modal {
+    display: block;
+  }
+  .modal-body .heading-modal .button-expand-modal, .modal-body .heading-modal .button-close-modal {
+    display: none;
+  }
+  .modal-body .slider-image {
+    margin: 20px 0;
+  }
+  .modal-body .slider-image .carousel-item .project-detail-image {
+    height: 213px;
+    width: 100%;
+    object-fit: cover;
+  }
+  .modal-body .slider-image .carousel-control-prev,
+  .modal-body .slider-image .carousel-control-next {
+    width: 20px;
+    height: 20px;
+    top: 50%;
+    transform: none;
+    color: #363636;
+    font-size: 20px;
+  }
+  .modal-body .slider-image .carousel-control-prev {
+    left: 0px;
+  }
+  .modal-body .slider-image .carousel-control-next {
+    right: 0;
+  }
+  .modal-body .project-detail {
+    padding: 20px 20px;
+  }
+  /* END MODAL RES*/
 }/*# sourceMappingURL=index.css.map */
