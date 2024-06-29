@@ -1,13 +1,3 @@
-$(document).ready(function () {
-  // $('.scroll-link').click(function(e){
-  //     e.preventDefault();
-  //     var target = $(this).data('target');
-  //     $('html, body').animate({
-  //         scrollTop: $('#' + target).offset().top
-  //     }, 500);
-  // });
-});
-
 function scrollToTop() {
   window.scrollTo(0, 0);
   hideNavSlide();
@@ -28,9 +18,6 @@ function scrollToCenter(id) {
   hideNavSlide();
 }
 
-// function toggleMenu () {
-//     $(".nav").toggleClass("nav-active");
-// }
 
 function expandSlide() {
   const screenWidth = screen.width;
@@ -82,33 +69,34 @@ document.addEventListener("fullscreenchange", function () {
   }
 });
 
-const buttonScrollToTopMobile = () => {
+document.addEventListener('DOMContentLoaded', function () {
+  const scrollButton = document.getElementById("scrollToTopBtn");
   let scrollTimeOut;
 
   function showScrollButton() {
-    const scrollButton = document.getElementById("scrollToTopBtn");
-    scrollButton.classList.add("show-button");
-    scrollButton.classList.remove("hide-button");
+      scrollButton.style.display = "block";
+      setTimeout(() => {
+          scrollButton.classList.add("show-button");
+          scrollButton.classList.remove("hide-button");
+      }, 10); // Short delay to ensure display:block takes effect
   }
 
   function hideScrollButton() {
-    const scrollButton = document.getElementById("scrollToTopBtn");
-    scrollButton.classList.remove("show-button");
-    scrollButton.classList.add("hide-button");
+      scrollButton.classList.remove("show-button");
+      scrollButton.classList.add("hide-button");
 
-    setTimeout(() => {
-      scrollButton.classList.remove("hide-button");
-      scrollButton.style.display = "none";
-    }, 500); // Match the duration of the CSS transition
+      setTimeout(() => {
+          scrollButton.style.display = "none";
+      }, 500); // Match the duration of the CSS transition
   }
 
   window.addEventListener("scroll", function () {
-    this.clearTimeout(scrollTimeOut);
-    showScrollButton();
+      clearTimeout(scrollTimeOut);
+      showScrollButton();
 
-    scrollTimeOut = this.setTimeout(hideScrollButton, 2000);
+      scrollTimeOut = setTimeout(hideScrollButton, 2000);
   });
-};
+});
 
 function hideNavSlide() {
   const nav = document.querySelector(".nav");
@@ -120,6 +108,7 @@ function hideNavSlide() {
   logo.classList.remove("image-logo-hidden");
 }
 
+// Nav Mobile
 const navSlide = () => {
   const toggleMenu = document.querySelector(".toggle-menu");
   const nav = document.querySelector(".nav");
@@ -133,54 +122,19 @@ const navSlide = () => {
   });
 };
 
+// Animate Text Banner Mobile
 const animatedText = () => {
   const screenWidth = screen.width;
 
-  if (screenWidth <= 576) {
+  if (screenWidth < 577) {
     setTimeout(function () {
-      document
-        .querySelector(".banner-content .heading")
-        .classList.add("text-animated");
-      document
-        .querySelector(".banner-content .desc")
-        .classList.add("text-animated");
+      document.querySelector(".banner-content .heading").classList.add("text-animated");
+      document.querySelector(".banner-content .desc").classList.add("text-animated");
     }, 2000);
   }
 };
 
-document.addEventListener("DOMContentLoaded", function () {
-  const screenWidth = screen.width;
-
-  if (screenWidth > 576) return;
-
-  const fadeElements = document.querySelectorAll(".fade-in");
-
-  function checkViewport() {
-    fadeElements.forEach((element) => {
-      if (isElementInViewport(element)) {
-        element.classList.add("visible");
-      }
-    });
-  }
-
-  function isElementInViewport(el) {
-    const rect = el.getBoundingClientRect();
-    const viewportHeight =
-      window.innerHeight || document.documentElement.clientHeight;
-
-    // Calculate the bottom 1/3 of the viewport
-    const viewportThreshold = viewportHeight - viewportHeight / 3;
-
-    return rect.top <= viewportThreshold;
-  }
-
-  // Initial check when page loads
-  checkViewport();
-
-  // Check when scrolling
-  document.addEventListener("scroll", checkViewport);
-});
-
+// Lazy load Mobile
 document.addEventListener("DOMContentLoaded", function () {
   const screenWidth = screen.width;
 
@@ -218,6 +172,6 @@ document.addEventListener("DOMContentLoaded", function () {
   document.addEventListener("scroll", checkViewport);
 });
 
+animatedText();
 navSlide();
 buttonScrollToTopMobile();
-animatedText();
