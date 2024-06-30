@@ -18,13 +18,14 @@ function scrollToCenter(id) {
   hideNavSlide();
 }
 
-
 function expandSlide() {
   const screenWidth = screen.width;
 
   if (screenWidth <= 576) {
-    return;
+    rotateScreen()
   }
+
+
 
   let slider = document.getElementById("projectSlider");
 
@@ -69,32 +70,32 @@ document.addEventListener("fullscreenchange", function () {
   }
 });
 
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener("DOMContentLoaded", function () {
   const scrollButton = document.getElementById("scrollToTopBtn");
   let scrollTimeOut;
 
   function showScrollButton() {
-      scrollButton.style.display = "block";
-      setTimeout(() => {
-          scrollButton.classList.add("show-button");
-          scrollButton.classList.remove("hide-button");
-      }, 10); // Short delay to ensure display:block takes effect
+    scrollButton.style.display = "block";
+    setTimeout(() => {
+      scrollButton.classList.add("show-button");
+      scrollButton.classList.remove("hide-button");
+    }, 10); // Short delay to ensure display:block takes effect
   }
 
   function hideScrollButton() {
-      scrollButton.classList.remove("show-button");
-      scrollButton.classList.add("hide-button");
+    scrollButton.classList.remove("show-button");
+    scrollButton.classList.add("hide-button");
 
-      setTimeout(() => {
-          scrollButton.style.display = "none";
-      }, 500); // Match the duration of the CSS transition
+    setTimeout(() => {
+      scrollButton.style.display = "none";
+    }, 500); // Match the duration of the CSS transition
   }
 
   window.addEventListener("scroll", function () {
-      clearTimeout(scrollTimeOut);
-      showScrollButton();
+    clearTimeout(scrollTimeOut);
+    showScrollButton();
 
-      scrollTimeOut = setTimeout(hideScrollButton, 2000);
+    scrollTimeOut = setTimeout(hideScrollButton, 2000);
   });
 });
 
@@ -128,8 +129,12 @@ const animatedText = () => {
 
   if (screenWidth < 577) {
     setTimeout(function () {
-      document.querySelector(".banner-content .heading").classList.add("text-animated");
-      document.querySelector(".banner-content .desc").classList.add("text-animated");
+      document
+        .querySelector(".banner-content .heading")
+        .classList.add("text-animated");
+      document
+        .querySelector(".banner-content .desc")
+        .classList.add("text-animated");
     }, 2000);
   }
 };
@@ -172,6 +177,32 @@ document.addEventListener("DOMContentLoaded", function () {
   document.addEventListener("scroll", checkViewport);
 });
 
+document.addEventListener("DOMContentLoaded", function () {
+  const menuItems = document.querySelectorAll(".nav .scroll-link");
+
+  menuItems.forEach((item) => {
+    item.addEventListener("click", function () {
+      menuItems.forEach((i) => i.classList.remove("active"));
+
+      this.classList.add("active");
+    });
+  });
+});
+
+function rotateScreen() {
+  if (screen.orientation && screen.orientation.lock) {
+    screen.orientation
+      .lock("landscape")
+      .then(() => {
+        console.log("Screen orientation locked to landscape.");
+      })
+      .catch((error) => {
+        console.error("Failed to lock screen orientation:", error);
+      });
+  } else {
+    console.error("Screen Orientation API is not supported on this browser.");
+  }
+}
+
 animatedText();
 navSlide();
-buttonScrollToTopMobile();

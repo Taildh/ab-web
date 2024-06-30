@@ -362,6 +362,11 @@ main {
 
             a {
                 display: block;
+                
+                img {
+                    width: 22px;
+                    height: 22px;
+                }
             }
         }
 
@@ -390,7 +395,7 @@ main {
         button {
             background: none;
             border: none;
-            padding: 10px;
+            padding: 8px 10px;
         }
 
         .button-back-modal {
@@ -399,7 +404,8 @@ main {
 
         .button-expand-modal:hover,
         .button-close-modal:hover {
-            background-color: rgba(180, 172, 172, 0.1);
+            // background-color: rgba(180, 172, 172, 0.1);
+            background-color: rgba(180, 172, 172, 0.9);
             border-radius: 50%;
 
         }
@@ -508,6 +514,7 @@ main {
         .button-close:hover {
             border-radius: 50%;
             background-color: rgba(180, 172, 172, 0.1);
+            background-color: rgba(180, 172, 172, 0.9);
         }
     }
 
@@ -579,11 +586,15 @@ main {
     }
 
     .scroll-top-mobile.show-button {
+        width: 44px;
+        height: 44px;
         opacity: 1;
         display: block;
     }
 
     .scroll-top-mobile.hide-button {
+        width: 44px;
+        height: 44px;
         opacity: 0;
     }
 
@@ -618,8 +629,10 @@ main {
 
                     a {
                         font-size: 20px;
-                        font-family: Arial, Helvetica, sans-serif;
-                        font-weight: 500;
+                    }
+                    
+                    a.active {
+                        color: #447F74;
                     }
                 }
             }
