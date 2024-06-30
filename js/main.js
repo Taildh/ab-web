@@ -189,7 +189,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function rotateScreen() {
-  const carousel = document.getElementById("projectDetailModal");
+  const carousel = document.getElementById("projectSlider");
 
   if (window.innerWidth <= 576) {
     if (carousel.requestFullscreen) {

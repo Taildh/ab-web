@@ -510,14 +510,14 @@ main {
     height: 44px;
     opacity: 1;
     display: block;
-    display: flex;
-    align-items: center;
-    justify-content: center;
   }
   .scroll-top-mobile.hide-button {
     width: 44px;
     height: 44px;
     opacity: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   /*HEADER RES*/
   .header .header-wrapper {
