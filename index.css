@@ -345,7 +345,7 @@ main {
 }
 .modal-body .heading-modal .button-expand-modal:hover,
 .modal-body .heading-modal .button-close-modal:hover {
-  background-color: rgba(180, 172, 172, 0.9);
+  background-color: rgba(180, 172, 172, 0.1);
   border-radius: 50%;
 }
 .modal-body .project-detail {
@@ -435,7 +435,6 @@ main {
 .modal-body .slider-image-fullscreen .slider-header .button-close:hover {
   border-radius: 50%;
   background-color: rgba(180, 172, 172, 0.1);
-  background-color: rgba(180, 172, 172, 0.9);
 }
 .modal-body .slider-image-fullscreen .carousel-item .project-detail-image {
   height: 100vh;
