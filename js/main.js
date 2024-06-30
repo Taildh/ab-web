@@ -22,10 +22,13 @@ function expandSlide() {
   const screenWidth = screen.width;
 
   if (screenWidth <= 576) {
-    rotateScreen()
+      const content = document.querySelector("body");
+      console.log(content);
+      
+      content.classList.toggle("rotate");
+
+    // return;
   }
-
-
 
   let slider = document.getElementById("projectSlider");
 

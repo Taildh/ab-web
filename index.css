@@ -368,6 +368,7 @@ main {
   background-color: #FFFFFF;
 }
 .modal-body .slider-image .carousel-item {
+  transition: transform 0.7s ease, opacity 1s ease;
   display: flex;
   justify-content: center;
 }
@@ -462,6 +463,17 @@ main {
 @media screen and (max-width: 576px) {
   body {
     overflow-x: hidden;
+    transition: transform 0.5s ease-in-out;
+    transform-origin: center center;
+  }
+  body.rotate {
+    transform: rotate(90deg);
+  }
+  .fullscreen-and-rotate {
+    transform: rotate(90deg);
+    width: 100vh;
+    height: 100vw;
+    overflow: hidden;
   }
   main {
     padding: 0;
