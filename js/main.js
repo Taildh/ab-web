@@ -22,12 +22,8 @@ function expandSlide() {
   const screenWidth = screen.width;
 
   if (screenWidth <= 576) {
-      const content = document.querySelector("body");
-      console.log(content);
-      
-      content.classList.toggle("rotate");
-
-    // return;
+    rotateScreen();
+    return;
   }
 
   let slider = document.getElementById("projectSlider");
@@ -193,18 +189,85 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function rotateScreen() {
-  if (screen.orientation && screen.orientation.lock) {
-    screen.orientation
-      .lock("landscape")
-      .then(() => {
-        console.log("Screen orientation locked to landscape.");
-      })
-      .catch((error) => {
-        console.error("Failed to lock screen orientation:", error);
-      });
+  const carousel = document.getElementById("projectDetailModal");
+
+  if (window.innerWidth <= 576) {
+    if (carousel.requestFullscreen) {
+      carousel
+        .requestFullscreen()
+        .then(() => {
+          document.body.classList.add("fullscreen-and-rotate");
+        })
+        .catch((err) => {
+          console.error(
+            `Error attempting to enable fullscreen mode: ${err.message} (${err.name})`
+          );
+        });
+    } else if (carousel.mozRequestFullScreen) {
+      // Firefox
+      carousel
+        .mozRequestFullScreen()
+        .then(() => {
+          document.body.classList.add("fullscreen-and-rotate");
+        })
+        .catch((err) => {
+          console.error(
+            `Error attempting to enable fullscreen mode: ${err.message} (${err.name})`
+          );
+        });
+    } else if (carousel.webkitRequestFullscreen) {
+      // Chrome, Safari and Opera
+      carousel
+        .webkitRequestFullscreen()
+        .then(() => {
+          document.body.classList.add("fullscreen-and-rotate");
+        })
+        .catch((err) => {
+          console.error(
+            `Error attempting to enable fullscreen mode: ${err.message} (${err.name})`
+          );
+        });
+    } else if (carousel.msRequestFullscreen) {
+      // IE/Edge
+      carousel
+        .msRequestFullscreen()
+        .then(() => {
+          document.body.classList.add("fullscreen-and-rotate");
+        })
+        .catch((err) => {
+          console.error(
+            `Error attempting to enable fullscreen mode: ${err.message} (${err.name})`
+          );
+        });
+    }
   } else {
-    console.error("Screen Orientation API is not supported on this browser.");
+    alert("This function is only available on mobile screens.");
   }
+
+  // Exit fullscreen and rotation when fullscreen is exited
+  document.addEventListener("fullscreenchange", function () {
+    if (!document.fullscreenElement) {
+      document.body.classList.remove("fullscreen-and-rotate");
+    }
+  });
+
+  document.addEventListener("mozfullscreenchange", function () {
+    if (!document.mozFullScreenElement) {
+      document.body.classList.remove("fullscreen-and-rotate");
+    }
+  });
+
+  document.addEventListener("webkitfullscreenchange", function () {
+    if (!document.webkitFullscreenElement) {
+      document.body.classList.remove("fullscreen-and-rotate");
+    }
+  });
+
+  document.addEventListener("msfullscreenchange", function () {
+    if (!document.msFullscreenElement) {
+      document.body.classList.remove("fullscreen-and-rotate");
+    }
+  });
 }
 
 animatedText();

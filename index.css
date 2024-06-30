@@ -466,8 +466,13 @@ main {
     transition: transform 0.5s ease-in-out;
     transform-origin: center center;
   }
-  body.rotate {
+  body.fullscreen-and-rotate {
     transform: rotate(90deg);
+    width: 100vh;
+    height: 100vw;
+    overflow: hidden;
+    transition: transform 0.5s ease-in-out;
+    transform-origin: center center;
   }
   .fullscreen-and-rotate {
     transform: rotate(90deg);
@@ -505,6 +510,9 @@ main {
     height: 44px;
     opacity: 1;
     display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   .scroll-top-mobile.hide-button {
     width: 44px;
