@@ -122,6 +122,32 @@ const navSlide = () => {
   });
 };
 
+$(".project-item").click(function () {
+  if ($(this).hasClass("project-item-active")) {
+    const modal = $("#projectDetailModal");
+    modal.show();
+  } else {
+    $(".project-item").removeClass("project-item-active");
+    $(this).addClass("project-item-active");
+  }
+});
+
+$(".button-close-modal").click(function () {
+  const modal = $("#projectDetailModal");
+
+  modal.hide();
+});
+
+$(".project-item").on("mouseout", function (e) {
+  $(this).removeClass("project-item-active");
+});
+
+$(".project-item-active").click(function () {
+  const modal = $("#projectDetailModal");
+
+  modal.show();
+});
+
 // Animate Text Banner Mobile
 const animatedText = () => {
   const screenWidth = screen.width;

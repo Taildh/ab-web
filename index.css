@@ -13,8 +13,16 @@
   src: url("/fonts/Montserrat_Black.ttf");
 }
 @font-face {
-  font-family: AvenirNextRegular;
-  src: url("/fonts/AvenirNextRegular.otf");
+  font-family: MontserratLight;
+  src: url("/fonts/MontserratLight.ttf");
+}
+@font-face {
+  font-family: MontserratRegular;
+  src: url("/fonts/MontserratLight.ttf");
+}
+@font-face {
+  font-family: MontserratRegular;
+  src: url("/fonts/MontserratRegular.otf");
 }
 @font-face {
   font-family: AvenirNextDemiBoldItalic;
@@ -63,6 +71,9 @@ main {
   line-height: 50px;
   padding: 0 5px;
   font-family: AvenirLight, sans-serif;
+}
+.header-wrapper .nav li a.active {
+  color: #447F74;
 }
 .header-wrapper .toggle-menu {
   display: none;
@@ -213,7 +224,7 @@ main {
   justify-content: center;
   align-items: center;
   transform: translate(-50%, -50%);
-  background: rgba(65, 65, 65, 0.9);
+  background: rgba(65, 65, 65, 0.7);
   opacity: 0;
   transition: opacity 0.3s ease;
 }
@@ -234,9 +245,8 @@ main {
   letter-spacing: 0.08em;
   font-family: AvenirLight, sans-serif;
 }
-.project-category-wrapper .project-list .project-item:hover .content {
+.project-category-wrapper .project-list .project-item-active .content {
   opacity: 1;
-  /* Show text on hover */
 }
 
 /* END PROJECT CATEGORY */
@@ -401,10 +411,10 @@ main {
   border-radius: 50%;
 }
 .modal-body .slider-image .carousel-control-prev {
-  left: -90px;
+  left: 0px;
 }
 .modal-body .slider-image .carousel-control-next {
-  right: -90px;
+  right: 0px;
 }
 .modal-body .slider-image-fullscreen {
   position: relative;
@@ -447,10 +457,10 @@ main {
   height: 100vh;
 }
 .modal-body .slider-image-fullscreen .carousel-control-prev {
-  left: 30px;
+  left: 10vw;
 }
 .modal-body .slider-image-fullscreen .carousel-control-next {
-  right: 30px;
+  right: 10vw;
 }
 
 /* END MODAL*/
@@ -494,7 +504,7 @@ main {
     z-index: 2;
     display: none;
     right: 30px;
-    bottom: 30vh;
+    bottom: 15vh;
     background: rgba(255, 255, 255, 0.5);
     border: none;
     border-radius: 5px;
@@ -544,9 +554,6 @@ main {
   }
   .header .header-wrapper .nav li a {
     font-size: 20px;
-  }
-  .header .header-wrapper .nav li a.active {
-    color: #447F74;
   }
   .header .header-wrapper .nav-active {
     transform: translateX(0);
