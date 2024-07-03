@@ -1,12 +1,20 @@
 @charset "UTF-8";
 @import "scss/reset.css";
 @font-face {
-  font-family: RaleWay;
-  src: url("/fonts/RalewayRegular.ttf");
+  font-family: RaleWayRegular;
+  src: url("/fonts/Raleway-Regular.ttf");
 }
 @font-face {
-  font-family: AvenirLight;
+  font-family: RaleWay;
+  src: url("/fonts/Raleway-Light.ttf");
+}
+@font-face {
+  font-family: AvenirUltraLight;
   src: url("/fonts/AvenirNext_UltraLight.otf");
+}
+@font-face {
+  font-family: AvenirRegular;
+  src: url("/fonts/AvenirNextRegular.otf");
 }
 @font-face {
   font-family: MontserratBlack;
@@ -70,7 +78,7 @@ main {
   font-size: 14px;
   line-height: 50px;
   padding: 0 5px;
-  font-family: AvenirLight, sans-serif;
+  font-family: AvenirUltraLight, sans-serif;
 }
 .header-wrapper .nav li a.active {
   color: #447F74;
@@ -124,7 +132,9 @@ main {
   color: #FFFFFF;
   font-size: 20px;
   letter-spacing: 0.8em;
-  font-family: AvenirNextRegular, sans-serif;
+  text-transform: uppercase;
+  font-weight: 400;
+  font-family: AvenirRegular, sans-serif;
 }
 .banner-wrapper .banner-mobile {
   display: none;
@@ -161,7 +171,7 @@ main {
   margin: 50px auto 0;
   letter-spacing: normal;
   line-height: 1.6em;
-  font-family: RaleWay, sans-serif;
+  font-family: RaleWayRegular, sans-serif;
 }
 
 /* INTRODUCTION */
@@ -234,16 +244,16 @@ main {
   font-size: 17px;
   font-style: italic;
   letter-spacing: 0.08em;
-  font-family: RaleWay, sans-serif;
+  font-family: RaleWayRegular, sans-serif;
 }
 .project-category-wrapper .project-list .project-item .content .area {
   margin-top: 15px;
   display: block;
   color: #FFFFFF;
-  font-size: 15px;
+  font-size: 14px;
   font-style: italic;
   letter-spacing: 0.08em;
-  font-family: AvenirLight, sans-serif;
+  font-family: AvenirUltraLight, sans-serif;
 }
 .project-category-wrapper .project-list .project-item-active .content {
   opacity: 1;
@@ -288,14 +298,14 @@ main {
   text-decoration: none;
   margin: 15px 0;
   color: #363636;
-  font-family: RaleWay, sans-serif;
+  font-family: RaleWayRegular, sans-serif;
 }
 .contact-wrapper .contact-info .hotline,
 .contact-wrapper .contact-info .address {
   font-size: 20px;
   margin: 15px 0;
   color: #363636;
-  font-family: RaleWay, sans-serif;
+  font-family: RaleWayRegular, sans-serif;
   line-height: 20px;
 }
 
@@ -370,7 +380,7 @@ main {
 .modal-body .project-detail .description {
   margin-top: 18px;
   font-size: 20px;
-  font-family: RaleWay, sans-serif;
+  font-family: RaleWayRegular, sans-serif;
   line-height: 25px;
 }
 .modal-body .slider-image {

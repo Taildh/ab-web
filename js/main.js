@@ -1,3 +1,5 @@
+const screenWidth = screen.width;
+
 function scrollToTop() {
   window.scrollTo(0, 0);
   hideNavSlide();
@@ -16,6 +18,12 @@ function scrollToCenter(id) {
   });
 
   hideNavSlide();
+}
+
+function closeModal() {
+  const modal = $("#projectDetailModal");
+
+  modal.hide();
 }
 
 function expandSlide() {
@@ -122,30 +130,41 @@ const navSlide = () => {
   });
 };
 
-$(".project-item").click(function () {
-  if ($(this).hasClass("project-item-active")) {
+function handleModalDisplay(element) {
+  console.log(123);
+  if ($(element).hasClass("project-item-active")) {
     const modal = $("#projectDetailModal");
     modal.show();
-  } else {
-    $(".project-item").removeClass("project-item-active");
-    $(this).addClass("project-item-active");
   }
-});
+}
 
-$(".button-close-modal").click(function () {
-  const modal = $("#projectDetailModal");
+// Function to handle adding the active class to project items
+function handleProjectItemActivation(element) {
+  $(".project-item").removeClass("project-item-active");
+  $(element).addClass("project-item-active");
+}
 
-  modal.hide();
-});
+function setupHandlers() {
+  if ($(window).width() < 576) {
+    $(".project-item")
+      .off("mouseenter mouseout")
+      .on("click", function () {
+        handleProjectItemActivation(this);
+      });
+  } else {
+    $(".project-item").hover(
+      function () {
+        handleProjectItemActivation(this);
+      },
+      function () {
+        $(".project-item").removeClass("project-item-active");
+      }
+    );
+  }
+}
 
-$(".project-item").on("mouseout", function (e) {
-  $(this).removeClass("project-item-active");
-});
-
-$(".project-item-active").click(function () {
-  const modal = $("#projectDetailModal");
-
-  modal.show();
+$(".project-item").on("click", function () {
+  handleModalDisplay(this);
 });
 
 // Animate Text Banner Mobile
@@ -298,3 +317,8 @@ function rotateScreen() {
 
 animatedText();
 navSlide();
+setupHandlers();
+
+$(window).resize(function () {
+  setupHandlers();
+});
