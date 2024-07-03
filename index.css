@@ -690,11 +690,14 @@ main {
   .modal-body .slider-image {
     margin: 20px 0;
   }
-  .modal-body .slider-image .carousel-item .project-detail-image {
+  .modal-body .slider-image .carousel-item {
     width: 100%;
+  }
+  .modal-body .slider-image .carousel-item .project-detail-image {
+    width: 100vw;
     height: 213px;
-    object-fit: contain;
-    box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+    object-fit: cover;
+    box-shadow: 0 -10px 10px -10px rgba(0, 0, 0, 0.5), 0 10px 10px -10px rgba(0, 0, 0, 0.5);
   }
   .modal-body .slider-image .carousel-control-prev,
   .modal-body .slider-image .carousel-control-next {

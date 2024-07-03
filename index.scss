@@ -850,12 +850,13 @@ main {
             margin: 20px 0;
 
             .carousel-item {
-
+                width: 100%;
                 .project-detail-image {
-                    width: 100%;
+                    width: 100vw;
                     height: 213px;
-                    object-fit: contain;
-                    box-shadow: 0 19px 38px rgba(0, 0, 0, 0.30), 0 15px 12px rgba(0, 0, 0, 0.22);
+                    object-fit: cover;
+                    box-shadow: 0 -10px 10px -10px rgba(0, 0, 0, 0.5), 
+                    0 10px 10px -10px rgba(0, 0, 0, 0.5);
                 }
             }
 
