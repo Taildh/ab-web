@@ -395,7 +395,7 @@ main {
 .modal-body .slider-image .carousel-item .project-detail-image {
   cursor: pointer;
   height: calc(100vh - 200px);
-  width: auto;
+  width: 100%;
 }
 .modal-body .slider-image .carousel-item .image-full-width {
   width: 80vw;
