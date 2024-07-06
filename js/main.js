@@ -21,6 +21,7 @@ function scrollToCenter(id) {
 }
 
 function closeModal() {
+  console.log("hide");
   const modal = $("#projectDetailModal");
 
   modal.hide();
@@ -67,13 +68,77 @@ function exitFullScreen() {
   }
 }
 
+function hideNavSlide() {
+  const nav = document.querySelector(".nav");
+  const logo = document.querySelector(".image-logo");
+  const toggleMenu = document.querySelector(".toggle-menu");
+
+  toggleMenu.classList.remove("close-toggle-menu");
+  nav.classList.remove("nav-active");
+  logo.classList.remove("image-logo-hidden");
+}
+
+// Nav Mobile
+const navSlide = () => {
+  const toggleMenu = document.querySelector(".toggle-menu");
+  const nav = document.querySelector(".nav");
+  const logo = document.querySelector(".image-logo");
+
+  toggleMenu.addEventListener("click", function () {
+    nav.classList.toggle("nav-active");
+
+    toggleMenu.classList.toggle("close-toggle-menu");
+    logo.classList.toggle("image-logo-hidden");
+  });
+};
+
+function handleModalDisplay(element) {
+  if ($(element).hasClass("project-item-active")) {
+    const modal = $("#projectDetailModal");
+    modal.show();
+  }
+}
+
+// Function to handle adding the active class to project items
+function handleProjectItemActivation(element) {
+  $(".project-item").removeClass("project-item-active");
+  $(element).addClass("project-item-active");
+}
+
+function setupHandlers() {
+  if ($(window).width() < 576) {
+    $(".project-item")
+      .off("mouseenter mouseout")
+      .on("click", function () {
+        handleProjectItemActivation(this);
+      });
+  } else {
+    $(".project-item").hover(
+      function () {
+        handleProjectItemActivation(this);
+      },
+      function () {
+        $(".project-item").removeClass("project-item-active");
+      }
+    );
+  }
+}
+
+
 document.addEventListener("fullscreenchange", function () {
   let slider = document.getElementById("projectSlider");
   if (!document.fullscreenElement) {
     slider.classList.remove("slider-image-fullscreen");
+    // Exited full-screen mode
+
+    $("#projectSlider").hide();
+    $("#mainImageWrapper").show();
   } else {
     slider.classList.add("slider-image-fullscreen");
-    console.log("Entered full-screen mode");
+    // Entered full-screen mode
+    $("#projectSlider").show();
+    $("#mainImageWrapper").hide();
+  
   }
 });
 
@@ -106,72 +171,19 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-function hideNavSlide() {
-  const nav = document.querySelector(".nav");
-  const logo = document.querySelector(".image-logo");
-  const toggleMenu = document.querySelector(".toggle-menu");
 
-  toggleMenu.classList.remove("close-toggle-menu");
-  nav.classList.remove("nav-active");
-  logo.classList.remove("image-logo-hidden");
-}
 
-// Nav Mobile
-const navSlide = () => {
-  const toggleMenu = document.querySelector(".toggle-menu");
-  const nav = document.querySelector(".nav");
-  const logo = document.querySelector(".image-logo");
-
-  toggleMenu.addEventListener("click", function () {
-    nav.classList.toggle("nav-active");
-
-    toggleMenu.classList.toggle("close-toggle-menu");
-    logo.classList.toggle("image-logo-hidden");
-  });
-};
-
-function handleModalDisplay(element) {
-  console.log(123);
-  if ($(element).hasClass("project-item-active")) {
-    const modal = $("#projectDetailModal");
-    modal.show();
-  }
-}
-
-// Function to handle adding the active class to project items
-function handleProjectItemActivation(element) {
-  $(".project-item").removeClass("project-item-active");
-  $(element).addClass("project-item-active");
-}
-
-function setupHandlers() {
-  if ($(window).width() < 576) {
-    $(".project-item")
-      .off("mouseenter mouseout")
-      .on("click", function () {
-        handleProjectItemActivation(this);
-      });
-  } else {
-    $(".project-item").hover(
-      function () {
-        handleProjectItemActivation(this);
-      },
-      function () {
-        $(".project-item").removeClass("project-item-active");
-      }
-    );
-  }
-}
 
 $(".project-item").on("click", function () {
   handleModalDisplay(this);
+  $(".list-images").slick("setPosition");
 });
 
 // Animate Text Banner Mobile
 const animatedText = () => {
   const screenWidth = screen.width;
 
-  if (screenWidth < 577) {
+  if (screenWidth <= 576) {
     setTimeout(function () {
       document
         .querySelector(".banner-content .heading")
@@ -234,85 +246,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function rotateScreen() {
-  const carousel = document.getElementById("projectSlider");
-
-  if (window.innerWidth <= 576) {
-    if (carousel.requestFullscreen) {
-      carousel
-        .requestFullscreen()
-        .then(() => {
-          document.body.classList.add("fullscreen-and-rotate");
-        })
-        .catch((err) => {
-          console.error(
-            `Error attempting to enable fullscreen mode: ${err.message} (${err.name})`
-          );
-        });
-    } else if (carousel.mozRequestFullScreen) {
-      // Firefox
-      carousel
-        .mozRequestFullScreen()
-        .then(() => {
-          document.body.classList.add("fullscreen-and-rotate");
-        })
-        .catch((err) => {
-          console.error(
-            `Error attempting to enable fullscreen mode: ${err.message} (${err.name})`
-          );
-        });
-    } else if (carousel.webkitRequestFullscreen) {
-      // Chrome, Safari and Opera
-      carousel
-        .webkitRequestFullscreen()
-        .then(() => {
-          document.body.classList.add("fullscreen-and-rotate");
-        })
-        .catch((err) => {
-          console.error(
-            `Error attempting to enable fullscreen mode: ${err.message} (${err.name})`
-          );
-        });
-    } else if (carousel.msRequestFullscreen) {
-      // IE/Edge
-      carousel
-        .msRequestFullscreen()
-        .then(() => {
-          document.body.classList.add("fullscreen-and-rotate");
-        })
-        .catch((err) => {
-          console.error(
-            `Error attempting to enable fullscreen mode: ${err.message} (${err.name})`
-          );
-        });
-    }
-  } else {
-    alert("This function is only available on mobile screens.");
-  }
-
-  // Exit fullscreen and rotation when fullscreen is exited
-  document.addEventListener("fullscreenchange", function () {
-    if (!document.fullscreenElement) {
-      document.body.classList.remove("fullscreen-and-rotate");
-    }
-  });
-
-  document.addEventListener("mozfullscreenchange", function () {
-    if (!document.mozFullScreenElement) {
-      document.body.classList.remove("fullscreen-and-rotate");
-    }
-  });
-
-  document.addEventListener("webkitfullscreenchange", function () {
-    if (!document.webkitFullscreenElement) {
-      document.body.classList.remove("fullscreen-and-rotate");
-    }
-  });
-
-  document.addEventListener("msfullscreenchange", function () {
-    if (!document.msFullscreenElement) {
-      document.body.classList.remove("fullscreen-and-rotate");
-    }
-  });
+  document.body.classList.toggle('rotated');
 }
 
 animatedText();
@@ -321,4 +255,16 @@ setupHandlers();
 
 $(window).resize(function () {
   setupHandlers();
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+  const thumbnails = document.querySelectorAll(".slick-item");
+  const mainImage = document.getElementById("mainImage");
+
+  thumbnails.forEach((thumbnail) => {
+    thumbnail.addEventListener("mouseenter", function () {
+      const newSrc = this.src;
+      mainImage.setAttribute("src", newSrc);
+    });
+  });
 });
