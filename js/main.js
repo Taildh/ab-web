@@ -263,8 +263,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
   thumbnails.forEach((thumbnail) => {
     thumbnail.addEventListener("mouseenter", function () {
+      const images = document.querySelectorAll(".slick-item");
+
+      images.forEach((item) => {
+        item.classList.remove("hovered")
+      })
+
       const newSrc = this.src;
       mainImage.setAttribute("src", newSrc);
+
+      this.classList.add('hovered');
     });
   });
 });

@@ -63,7 +63,7 @@
                 <h1 class="heading">01. giới thiệu</h1>
                 <div class="introduction-content">
                     <div class="introduction-image">
-                        <img src="/images/19.jpg" alt="team">
+                        <img src="images/19.jpg" alt="team">
                     </div>
                     <div>
                         <p class="intro-text">
@@ -187,7 +187,7 @@
                         </div>
 
                         <div class="row project-content">
-                            <div class="col-md-8 align-items-center">
+                            <div class="col-lg-8 col-md-12 align-items-center">
                                 <div id="projectSlider" class="slider-image carousel slide carousel-fade"
                                     data-bs-interval="false">
                                     <div class="slider-header">
@@ -303,14 +303,15 @@
                                     <img src="/images/19.jpg" id="mainImage" alt="Main Image" onclick="expandSlide()">
                                 </div>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-lg-4 col-md-12">
                                 <div class="project-detail">
                                     <span class="title">Tiêu đề ảnh ở đây</span>
 
                                     <p class="description">
-                                        Mô tả ảnh của bạn ở đây
-                                        <br>
                                         Diện tích: 100m
+                                        <br>
+                                        Mô tả ảnh của bạn ở đây
+                                       
                                     </p>
                                 </div>
                             </div>
@@ -410,8 +411,8 @@
         $(document).ready(function () {
             $('.list-images').slick({
                 initialSlide: 0, // Start with the first slide on the left
-                infinite: false,
-                slidesToShow: 5.2,
+                infinite: true,
+                slidesToShow: 5,
                 slidesToScroll: 5,
                 adaptiveHeight: true,
                 prevArrow: $('.slick-prev'),

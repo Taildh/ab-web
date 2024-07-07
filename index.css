@@ -475,18 +475,21 @@ main {
   height: 100vh;
 }
 .modal-body .slider-image-fullscreen .carousel-control-prev {
-  left: 10vw;
+  left: 2vw;
 }
 .modal-body .slider-image-fullscreen .carousel-control-next {
-  right: 10vw;
+  right: 2vw;
 }
 .modal-body .list-images {
   margin: 0 70px;
   cursor: pointer;
 }
-.modal-body .list-images div img {
+.modal-body .list-images div .slick-item {
   width: 145px;
   height: 100px;
+}
+.modal-body .list-images div .slick-item.hovered {
+  border: 2px solid #BA3026;
 }
 .modal-body .main-image-wrapper {
   margin: 30px 70px;
@@ -511,6 +514,17 @@ main {
   opacity: 0;
 }
 
+@media screen and (max-width: 876px) {
+  .modal-body .slider-image {
+    display: block;
+  }
+  .modal-body .list-images-wrapper {
+    display: none;
+  }
+  .modal-body .main-image-wrapper {
+    display: none;
+  }
+}
 @media screen and (max-width: 576px) {
   body {
     overflow-x: hidden;

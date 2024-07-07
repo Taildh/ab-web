@@ -574,11 +574,11 @@ main {
         }
 
         .carousel-control-prev {
-            left: 10vw;
+            left: 2vw;
         }
 
         .carousel-control-next {
-            right: 10vw;
+            right: 2vw;
         }
     }
 
@@ -587,10 +587,13 @@ main {
         cursor: pointer;
         
         div {
-            img {
+            .slick-item {
                 width: 145px;
                 height: 100px;
+            }
 
+            .slick-item.hovered {
+                border: 2px solid #BA3026;
             }
         }
     }
@@ -621,6 +624,22 @@ main {
     opacity: 0;
 }
 
+@media screen and (max-width: 876px) {
+    .modal-body {
+        .slider-image {
+            display: block;
+        }
+
+        .list-images-wrapper {
+            display: none;
+        }
+
+        .main-image-wrapper {
+            display: none;
+        }
+    }
+}
+
 @media screen and (max-width: 576px) {
     body {
         overflow-x: hidden;
@@ -635,22 +654,6 @@ main {
         height: 100vw; /* Use viewport width as height after rotation */
         overflow-x: hidden; /* Hide overflow due to rotation */
     }
-
-    // body.fullscreen-and-rotate {
-    //     transform: rotate(90deg);
-    //     width: 100vh;
-    //     height: 100vw;
-    //     overflow: hidden;
-    //     transition: transform 0.5s ease-in-out;
-    //     transform-origin: center center;
-    // }
-
-    // .fullscreen-and-rotate {
-    //     transform: rotate(90deg);
-    //     width: 100vh;
-    //     height: 100vw;
-    //     overflow: hidden;
-    // }
 
     main {
         padding: 0;
